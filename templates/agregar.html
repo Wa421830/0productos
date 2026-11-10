@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Agregar Nuevo Producto al Inventario</h5>
+    </div>
+    <div class="card-body">
+        <form method="POST">
+            <h6 class="text-muted border-bottom pb-2">Datos del Catálogo (productos.db)</h6>
+            <div class="row g-3 mb-4">
+                <div class="col-md-3">
+                    <label class="form-label">Código SKU</label>
+                    <input type="text" name="codigo" class="form-control" placeholder="Ej. PRD-001" required>
+                </div>
+                <div class="col-md-5">
+                    <label class="form-label">Nombre del Producto</label>
+                    <input type="text" name="nombre" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Categoría</label>
+                    <select name="categoria" class="form-select" required>
+                        <option value="Electrónica">Electrónica</option>
+                        <option value="Alimentos">Alimentos</option>
+                        <option value="Ferretería">Ferretería</option>
+                        <option value="Oficina">Oficina</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Proveedor</label>
+                    <select name="proveedor" class="form-select" required>
+                        <option value="Distribuidora Central">Distribuidora Central</option>
+                        <option value="Importadora Global">Importadora Global</option>
+                        <option value="Suministros del Norte">Suministros del Norte</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Precio Unitario ($)</label>
+                    <input type="number" step="0.01" name="precio" class="form-control" required>
+                </div>
+            </div>
+
+            <h6 class="text-muted border-bottom pb-2">Control de Existencias (inventario.db)</h6>
+            <div class="row g-3 mb-4">
+                <div class="col-md-3">
+                    <label class="form-label">Cantidad Inicial</label>
+                    <input type="number" name="cantidad" class="form-control" required>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Ubicación / Pasillo</label>
+                    <input type="text" name="ubicacion" class="form-control" placeholder="Ej. Bodega A-1" required>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Fecha de Ingreso</label>
+                    <input type="date" name="fecha_ingreso" class="form-control" value="{{ hoy }}" required>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Fecha de Vencimiento</label>
+                    <input type="date" name="fecha_vencimiento" class="form-control">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar Registro</button>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
