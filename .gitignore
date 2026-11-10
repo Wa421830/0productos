@@ -1,1 +1,7 @@
+git init
+git add .
+git commit -m "CRUD completo en Flask con productos.db e inventario.db"
+git branch -M main
+git remote add origin https://github.com
+git push -u origin main
 
